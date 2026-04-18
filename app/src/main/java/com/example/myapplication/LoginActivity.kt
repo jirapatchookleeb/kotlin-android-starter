@@ -23,12 +23,35 @@ class LoginActivity :  AppCompatActivity()  {
             val password = binding.etPassword.text.toString()
 
             if (username == "admin" && password == "1234") {
+
+                val sharedPref = getSharedPreferences("MY_APP", MODE_PRIVATE)
+                sharedPref.edit()
+                    .putBoolean("IS_LOGGED_IN", true)
+                    .apply()
+
                 // ไปหน้า Main
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val isLoggedIn = checkLoginStatus()
+
+        if (isLoggedIn) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun checkLoginStatus(): Boolean {
+        val sharedPref = getSharedPreferences("MY_APP", MODE_PRIVATE)
+        return sharedPref.getBoolean("IS_LOGGED_IN", false)
     }
 }
