@@ -8,6 +8,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +27,20 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SecondpageActivity::class.java)
             startActivity(intent)
         }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        val data = listOf(
+            "Item 1",
+            "Item 2",
+            "Item 3",
+            "Item 4",
+            "Item 5"
+        )
+
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CustomAdapter(data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
