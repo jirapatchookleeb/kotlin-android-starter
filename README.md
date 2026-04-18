@@ -47,13 +47,13 @@ Make sure the following tools are installed on your machine before cloning.
 Open a terminal and run:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/jirapatchookleeb/kotlin-android-starter.git
 ```
 
 Then navigate into the project folder:
 
 ```bash
-cd your-repo-name
+cd kotlin-android-starter
 ```
 
 ---
